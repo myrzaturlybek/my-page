@@ -12,13 +12,50 @@
     />
     <style>
       body {
-        font-family: BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         font-size: calc(10px + 0.33vw);
         -webkit-font-smoothing: antialiased;
         padding: 5vh 10vw;
         color: #121314;
         text-align: center;
+        transition: 0.5s all ease;
+      }
+      body.dark-mode {
+        background-color: #0d1117;
+        color: #c9d1d9;
+      }
+      body.dark-mode .theme-switch {
+        background-color: #6e40c9;
+      }
+      body.dark-mode .theme-switch__switch {
+        transform: translateX(23px);
+        background-color: #c9d1d9;
+      }
+      button.dark-mode-toggle {
+        padding: 5px, 5px;
+        background-color: #2a7cc9;
+        border: none;
+      }
+      .theme-switch {
+        margin-left: auto;
+        margin-right: auto;
+        color: #121314;
+        width: 50px;
+        height: 25px;
+        background: #121314;
+        border-radius: 50px;
+        position: relative;
+      }
+      .theme-switch__switch {
+        background: white;
+        width: 21px;
+        height: 21px;
+        border-radius: 100%;
+        position: absolute;
+        top: 2px;
+        left: 3px;
+        transition: 0.5s all ease;
       }
       h1 {
         font-size: 4.5em;
@@ -57,7 +94,10 @@
       }
     </style>
   </head>
-  <body>
+  <body class="light-mode">
+    <div onclick="toggleDarkLight()" class="theme-switch">
+      <div class="theme-switch__switch"></div>
+    </div>
     <h1>Hello.</h1>
     <p style="font-weight: 500; font-size: 2.2em">My name is Myrza.</p>
     <p>
@@ -69,5 +109,14 @@
     </p>
 
     <p>Outside of programming, I enjoy video games and crossfit.</p>
+
+    <script>
+      function toggleDarkLight() {
+        let body = document.getElementsByTagName("body")[0];
+        let currentClass = body.className;
+        body.className =
+          currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+      }
+    </script>
   </body>
 </html>
